@@ -86,44 +86,38 @@ class Dashboard extends Component {
       }
      
       render() {
-  
         const {auth} = this.state;
         const {data}= this.state;
-        console.log(data,"datadata")
-        //alert(auth);
         if(!auth){
             return <Redirect to='/'/>
         }
         return(
                 <>
-                <div className="dashboardOuter">                {
-                    data && data.length>0 && data.map((obj,index)=>(
-                        <data className="itm">
-                                <label>Id: </label>
-                                <span>{obj.id}</span>
-                                <br/>
-
-                                <label>Name:</label>
-                                <span>{obj.name}</span>
-                                <br/>
-                                <label>age:</label>
-                                <span>{obj.age}</span>
-                                <br/>
-                                <label>gender:</label>
-                                <span>{obj.gender}</span>
-                                <br/>
-                                <label>email:</label>
-                                <span>{obj.email}</span>
-                                <br/>
-
-                                <label>Phone No:</label>
-                                <span>{obj.phoneNo}</span>
-                                <br/>
-                        </data>
-                    ))
-                }
-           </div>
-
+                <table>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>email</th>
+                <th>phone Number</th>
+            </tr>
+           
+                {data && data.length>0 && data.map(obj=>{
+                    return(
+                        <>
+                         <tr>
+                        <td> {obj.id}</td>
+                        <td>{obj.name}</td>
+                        <td>{obj.age}</td>
+                        <td>{obj.gender}</td>
+                        <td>{obj.email}</td>
+                        <td>{obj.phoneNo}</td>
+                        </tr>
+                        </>
+                    )
+                })}
+            </table>
                 </>
         )
       }
